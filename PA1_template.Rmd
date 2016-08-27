@@ -44,6 +44,7 @@ ggplot(rw_ag_steps, aes(x = steps)) +
          x = "Steps per day", 
          y = "Frequency")
 ```
+![histogram 1](instructions_fig/unnamed-chunk-6-1.png) 
 
 ### 4. Mean and median number of steps taken each day
 ```{r, results='asis'}
@@ -62,7 +63,8 @@ rw_ag_act = aggregate(steps ~ interval, data = rw_ft, mean)
 ggplot(rw_ag_act, aes(x=interval, y=steps)) +
     geom_line(color = "blue")
 ```
-    
+![time series plot](instructions_fig/unnamed-chunk-9-1.png)     
+
 ### 3. The 5-minute interval that, on average, contains the maximum number of steps
 ```{r, results='asis'}
 rw_ag_act[which.max(rw_ag_act$steps),]
@@ -101,6 +103,7 @@ ggplot(steps_ag_full, aes(x = steps)) +
     labs(title = "Histogram of Steps per day, including missing values", 
          x = "Steps per day", y = "Frequency")
 ```
+![histogram 2](instructions_fig/unnamed-chunk-14-1.png)
 
 ### 5.Calculate and report the mean and median total number of steps taken per day
 ```{r, results='asis'}
@@ -129,3 +132,4 @@ interval_full = aggregate(steps ~ interval + weektype, data=rw_full, mean)
 ggplot(interval_full, aes(x=interval, y=steps, color = weektype)) +
     geom_line() + facet_wrap(~weektype, ncol = 1, nrow=2)
 ```
+![panel plot](instructions_fig/unnamed-chunk-18-1.png)
