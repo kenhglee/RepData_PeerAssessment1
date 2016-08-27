@@ -48,8 +48,11 @@ ggplot(rw_ag_steps, aes(x = steps)) +
 
 ### 4. Mean and median number of steps taken each day
 ```{r, results='asis'}
-mean(rw_ag_steps$steps, na.rm = TRUE)
-median(rw_ag_steps$steps, na.rm = TRUE)
+mean_steps = mean(rw_ag_steps$steps, na.rm = TRUE)
+median_steps = median(rw_ag_steps$steps, na.rm = TRUE)
+
+print(mean_steps)
+print(median_steps)
 ```
 
 ## What is the average daily activity pattern?
@@ -73,7 +76,9 @@ rw_ag_act[which.max(rw_ag_act$steps),]
 ## Imputing missing values
 ### 1. Calculate and report the total number of missing values in the dataset 
 ```{r, results='asis'}
-sum(is.na(rw$steps))
+total_na = sum(is.na(rw$steps))
+
+print(total_na)
 ```
 
 ### 2. Create a new dataset that is equal to the original dataset but with the missing data filled in
@@ -87,7 +92,8 @@ na_index <- is.na(rw_full$steps)
 avg_interval <- tapply(rw_full$steps, rw_full$interval, mean, na.rm=TRUE, simplify=TRUE)
 rw_full$steps[na_index] <- avg_interval[as.character(rw_full$interval[na_index])]
 
-sum(is.na(rw_full$steps))
+total_full = sum(is.na(rw_full$steps))
+print(total_full)
 ```
 
 ### 3. Aggregate sum of steps per date
@@ -107,8 +113,11 @@ ggplot(steps_ag_full, aes(x = steps)) +
 
 ### 5.Calculate and report the mean and median total number of steps taken per day
 ```{r, results='asis'}
-mean(steps_ag_full$steps, na.rm = TRUE)
-median(steps_ag_full$steps, na.rm = TRUE)
+mean_full = mean(steps_ag_full$steps, na.rm = TRUE)
+median_full = median(steps_ag_full$steps, na.rm = TRUE)
+
+print(mean_full)
+print(median_full)
 ```
 
 #### Note: The impact of the imputting turns out eqaulizing mean steps to median.

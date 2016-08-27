@@ -90,13 +90,16 @@ ggplot(rw_ag_steps, aes(x = steps)) +
 ### 4. Mean and median number of steps taken each day
 
 ```r
-mean(rw_ag_steps$steps, na.rm = TRUE)
+mean_steps = mean(rw_ag_steps$steps, na.rm = TRUE)
+median_steps = median(rw_ag_steps$steps, na.rm = TRUE)
+
+print(mean_steps)
 ```
 
 [1] 10766.19
 
 ```r
-median(rw_ag_steps$steps, na.rm = TRUE)
+print(median_steps)
 ```
 
 [1] 10765
@@ -131,7 +134,9 @@ rw_ag_act[which.max(rw_ag_act$steps),]
 ### 1. Calculate and report the total number of missing values in the dataset 
 
 ```r
-sum(is.na(rw$steps))
+total_na = sum(is.na(rw$steps))
+
+print(total_na)
 ```
 
 [1] 2304
@@ -148,7 +153,8 @@ na_index <- is.na(rw_full$steps)
 avg_interval <- tapply(rw_full$steps, rw_full$interval, mean, na.rm=TRUE, simplify=TRUE)
 rw_full$steps[na_index] <- avg_interval[as.character(rw_full$interval[na_index])]
 
-sum(is.na(rw_full$steps))
+total_full = sum(is.na(rw_full$steps))
+print(total_full)
 ```
 
 ```
@@ -177,13 +183,16 @@ ggplot(steps_ag_full, aes(x = steps)) +
 ### 5.Calculate and report the mean and median total number of steps taken per day
 
 ```r
-mean(steps_ag_full$steps, na.rm = TRUE)
+mean_full = mean(steps_ag_full$steps, na.rm = TRUE)
+median_full = median(steps_ag_full$steps, na.rm = TRUE)
+
+print(mean_full)
 ```
 
 [1] 10766.19
 
 ```r
-median(steps_ag_full$steps, na.rm = TRUE)
+print(median_full)
 ```
 
 [1] 10766.19

@@ -178,9 +178,12 @@ $(document).ready(function () {
 </div>
 <div id="mean-and-median-number-of-steps-taken-each-day" class="section level3">
 <h3>4. Mean and median number of steps taken each day</h3>
-<pre class="r"><code>mean(rw_ag_steps$steps, na.rm = TRUE)</code></pre>
+<pre class="r"><code>mean_steps = mean(rw_ag_steps$steps, na.rm = TRUE)
+median_steps = median(rw_ag_steps$steps, na.rm = TRUE)
+
+print(mean_steps)</code></pre>
 <p>[1] 10766.19</p>
-<pre class="r"><code>median(rw_ag_steps$steps, na.rm = TRUE)</code></pre>
+<pre class="r"><code>print(median_steps)</code></pre>
 <p>[1] 10765</p>
 </div>
 </div>
@@ -207,7 +210,9 @@ $(document).ready(function () {
 <h2>Imputing missing values</h2>
 <div id="calculate-and-report-the-total-number-of-missing-values-in-the-dataset" class="section level3">
 <h3>1. Calculate and report the total number of missing values in the dataset</h3>
-<pre class="r"><code>sum(is.na(rw$steps))</code></pre>
+<pre class="r"><code>total_na = sum(is.na(rw$steps))
+
+print(total_na)</code></pre>
 <p>[1] 2304</p>
 </div>
 <div id="create-a-new-dataset-that-is-equal-to-the-original-dataset-but-with-the-missing-data-filled-in" class="section level3">
@@ -224,7 +229,8 @@ na_index &lt;- is.na(rw_full$steps)
 avg_interval &lt;- tapply(rw_full$steps, rw_full$interval, mean, na.rm=TRUE, simplify=TRUE)
 rw_full$steps[na_index] &lt;- avg_interval[as.character(rw_full$interval[na_index])]
 
-sum(is.na(rw_full$steps))</code></pre>
+total_full = sum(is.na(rw_full$steps))
+print(total_full)</code></pre>
 <pre><code>## [1] 0</code></pre>
 </div>
 </div>
@@ -243,9 +249,12 @@ steps_ag_full = aggregate(steps ~ date, data=steps_full, sum)</code></pre>
 </div>
 <div id="calculate-and-report-the-mean-and-median-total-number-of-steps-taken-per-day" class="section level3">
 <h3>5.Calculate and report the mean and median total number of steps taken per day</h3>
-<pre class="r"><code>mean(steps_ag_full$steps, na.rm = TRUE)</code></pre>
+<pre class="r"><code>mean_full = mean(steps_ag_full$steps, na.rm = TRUE)
+median_full = median(steps_ag_full$steps, na.rm = TRUE)
+
+print(mean_full)</code></pre>
 <p>[1] 10766.19</p>
-<pre class="r"><code>median(steps_ag_full$steps, na.rm = TRUE)</code></pre>
+<pre class="r"><code>print(median_full)</code></pre>
 <p>[1] 10766.19</p>
 <div id="note-the-impact-of-the-imputting-turns-out-eqaulizing-mean-steps-to-median." class="section level4">
 <h4>Note: The impact of the imputting turns out eqaulizing mean steps to median.</h4>
