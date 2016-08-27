@@ -122,7 +122,7 @@ print(median_full)
 
 #### Note: The impact of the imputting turns out eqaulizing mean steps to median.
 
-## Are there differences in activity patterns between weekdays and weekends?
+## Are there differences in activity patterns  between weekdays and weekends?
 ### 1. Create a new factor variable in the dataset with two levels - "weekday" and "weekend" 
 ```{r}
 rw_full <- mutate(rw_full, weektype = ifelse(weekdays(rw_full$date) == "Saturday" 
